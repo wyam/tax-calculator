@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule, MatInputModule, MatListModule, MatTableModule} from '@angular/material';
+import { MatButtonModule, MatInputModule, MatListModule } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
@@ -18,7 +18,7 @@ import { AuthService } from './services/auth.service';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './store/effects/auth.effects';
 import { reducers } from './store/app.states';
-import {ErrorInterceptor, TokenInterceptor} from './services/token.interceptor';
+import { ErrorInterceptor, TokenInterceptor } from './services/token.interceptor';
 import {TaxService} from './services/tax.service';
 import {AuthGuard} from './services/auth.guard';
 
@@ -27,7 +27,7 @@ import {AuthGuard} from './services/auth.guard';
     AppComponent,
     SigninComponent,
     TaxComponent,
-    MainComponent
+    MainComponent,
   ],
   imports: [
     FormsModule,
@@ -35,7 +35,6 @@ import {AuthGuard} from './services/auth.guard';
     MatButtonModule,
     MatInputModule,
     MatListModule,
-    MatTableModule,
     BrowserModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
@@ -64,6 +63,6 @@ import {AuthGuard} from './services/auth.guard';
     }
   ],
   bootstrap: [AppComponent],
-  exports: [MatButtonModule, MatInputModule],
+  exports: [MatButtonModule, MatInputModule, MatListModule],
 })
 export class AppModule { }
