@@ -1,10 +1,11 @@
-const createError = require('http-errors')
 const express = require('express')
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const mongoose = require('mongoose')
 const indexRouter = require('./routes/index')
 const bodyParser = require('body-parser')
+const cors = require('cors')
+
 require('./passport')
 
 // connect to Mongo when the app initializes
@@ -13,6 +14,7 @@ mongoose.connect('mongodb://localhost:27017/taxCalculator')
 const app = express()
 
 app.use(logger('dev'))
+app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -22,7 +24,7 @@ app.use('/', indexRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  next(createError(404))
+  res.status(404).json(new Error('not found'))
 })
 
 // error handler

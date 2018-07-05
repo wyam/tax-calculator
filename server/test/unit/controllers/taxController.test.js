@@ -129,5 +129,31 @@ describe('taxController', () => {
         netTotalAmount: 85368
       })
     })
+
+    it('should return tax details with full income and superAnnuationRate', async () => {
+      const req = {
+        user: {
+          save: sinon.stub()
+        },
+        body: {
+          income: 0,
+          fullIncome: 110000,
+          superAnnuationRate: 10
+        }
+      }
+      req.user.save.resolves({})
+      const res = {
+        json: sinon.spy()
+      }
+      await taxController.taxCalculation(req, res)
+      assert.deepEqual(res.json.getCall(0).args[0], {
+        superAnnuation: 10000,
+        gross: 100000,
+        grossAndSuper: 110000,
+        taxAmount: 24632,
+        netAmount: 75368,
+        netTotalAmount: 85368
+      })
+    })
   })
 })

@@ -47,7 +47,7 @@ const calculateSuperannuation = (income, superRate = 0.095) => {
 
 const getPayDetails = (grossIncome, fullIncome, superAnnuationRate = 0.095) => {
   return {
-    gross: grossIncome || fullIncome / (1 + superAnnuationRate),
+    gross: grossIncome || Math.round(fullIncome / (1 + superAnnuationRate)),
     grossAndSuper: fullIncome || grossIncome + calculateSuperannuation(grossIncome, superAnnuationRate)
   }
 }
