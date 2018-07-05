@@ -7,6 +7,8 @@ Requirement
 Run test
 
 cd serve && npm test
+cd frontapp && ng test
+cd frontapp && ng e2e
 
 Run server
 
