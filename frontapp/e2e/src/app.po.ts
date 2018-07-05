@@ -1,11 +1,17 @@
 import { browser, by, element } from 'protractor';
 
 export class AppPage {
-  navigateTo() {
-    return browser.get('/');
+  navigateToSignInPage() {
+    return browser.get('/signin');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  signIn() {
+    element(by.css('input[type="email"]')).sendKeys('test@email.com');
+    element(by.css('input[type="password"')).sendKeys('pass');
+    element(by.css('button')).click();
+  }
+
+  getTaxPageHeader() {
+    return element(by.css('.header-tax')).getText();
   }
 }
