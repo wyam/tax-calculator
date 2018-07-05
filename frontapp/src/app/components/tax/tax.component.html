@@ -1,0 +1,48 @@
+<div class="container" fxLayout="row">
+  <div fxFlexOffset="20px">
+    <div *ngIf="errorMessage">
+      <div class="error">
+        {{errorMessage}}
+      </div>
+    </div>
+    <form (ngSubmit)="calculateTax()" class="form">
+      <mat-form-field>
+        <input matInput
+               type="number"
+               name="income"
+               placeholder="Income"
+               [(ngModel)]="tax.income"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               type="number"
+               name="fullIncome"
+               placeholder="Income + Super"
+               [(ngModel)]="tax.fullIncome"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               type="number"
+               name="superAnnuationRate"
+               placeholder="Super annuation rate"
+               [(ngModel)]="tax.superAnnuationRate"
+        />
+      </mat-form-field>
+      <button type="submit" mat-button>Calculate tax</button>
+    </form>
+  </div>
+  <div fxFlexOffset="20px">
+    <div *ngIf="tax.gross">
+      <mat-list role="list">
+        <mat-list-item role="listitem">Gross: <strong>{{ tax.gross }}</strong></mat-list-item>
+        <mat-list-item role="listitem">Gross with Super: <strong>{{ tax.grossAndSuper }}</strong></mat-list-item>
+        <mat-list-item role="listitem">SuperAnnuation: <strong>{{ tax.superAnnuation }}</strong></mat-list-item>
+        <mat-list-item role="listitem">Tax amount: <strong>{{ tax.taxAmount }}</strong></mat-list-item>
+        <mat-list-item role="listitem">Net amount: <strong>{{ tax.netAmount }}</strong></mat-list-item>
+        <mat-list-item role="listitem">Net amount and Super: <strong>{{ tax.netTotalAmount }}</strong></mat-list-item>
+      </mat-list>
+    </div>
+  </div>
+</div>

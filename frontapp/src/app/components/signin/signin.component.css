@@ -1,0 +1,8 @@
+.container {
+    justify-content: center;
+    padding: 40px;
+}
+
+.error {
+    color: red;
+}

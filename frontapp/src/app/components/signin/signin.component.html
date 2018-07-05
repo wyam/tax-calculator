@@ -1,0 +1,28 @@
+<div class="container" fxLayout="row">
+  <div fxFlexAlign="center">
+    <div *ngIf="errorMessage">
+      <div class="error">
+        {{errorMessage}}
+      </div>
+    </div>
+    <form (ngSubmit)="onSubmit()" class="form">
+      <mat-form-field>
+        <input matInput
+               type="email"
+               name="email"
+               placeholder="Email"
+               [(ngModel)]="user.email"
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput
+               type="password"
+               name="password"
+               placeholder="Password"
+               [(ngModel)]="user.password"
+        />
+      </mat-form-field>
+      <button type="submit" mat-button>Sign in</button>
+    </form>
+  </div>
+</div>
