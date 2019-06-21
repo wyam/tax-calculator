@@ -27,6 +27,7 @@ passport.use(new JWTStrategy({
 (jwtPayload, cb) => {
   return UserModel.findOne({email: jwtPayload.email})
     .then(user => {
+      console.log(user)
       return cb(null, user)
     })
     .catch(err => {
